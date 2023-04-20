@@ -7,14 +7,50 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Margin="122,27,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="122,50,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="122,73,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="122,96,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Label Content="ID:" HorizontalAlignment="Left" Margin="82,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.193,0.697"/>
-        <Label Content="Прізвище:" HorizontalAlignment="Left" Margin="40,43,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.052,-0.026"/>
-        <Label Content="Ім'я:" HorizontalAlignment="Left" Margin="68,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.034,-1.689"/>
-        <Label Content="По-батькові:" HorizontalAlignment="Left" Margin="27,92,0,0" VerticalAlignment="Top"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0" ItemsSource="{Binding Phones}" SelectedItem="{Binding SelectedPhone}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" />
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" />
+                <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}" />
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                <DataGridTextColumn Header="Страна" Binding="{Binding Country}" />
+                <DataGridTextColumn Header="Телефон" Binding="{Binding PhoneNumber}" />
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding DateOfBirth}" />
+                <DataGridTextColumn Header="Дата регистрации" Binding="{Binding RegistrationDate}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" Margin="10">
+                <TextBlock Text="ID:" />
+                <TextBlock Text="Фамилия:" Margin="0 10 0 0" />
+                <TextBlock Text="Имя:" Margin="0 10 0 0" />
+                <TextBlock Text="Отчество:" Margin="0 10 0 0" />
+                <TextBlock Text="Email:" Margin="0 10 0 0" />
+                <TextBlock Text="Страна:" Margin="0 10 0 0" />
+                <TextBlock Text="Телефон:" Margin="0 10 0 0" />
+                <TextBlock Text="Дата рождения:" Margin="0 30 0 0" />
+                <TextBlock Text="Дата регистрации:" Margin="0 43 0 0" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="10" Grid.Column="1">
+                <TextBox Text="{Binding SelectedPhone.Id}" IsEnabled="False" />
+                <TextBox Text="{Binding SelectedPhone.LastName}" Margin="0 10 0 0" />
+                <TextBox Text="{Binding SelectedPhone.FirstName}" Margin="0 10 0 0" />
+                <TextBox Text="{Binding SelectedPhone.MiddleName}" Margin="0 10 0 0" />
+                <TextBox Text="{Binding SelectedPhone.Email}" Margin="0 10 0 0" />
+                <ComboBox ItemsSource="{Binding Countries}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedPhone.Country}" Margin="0 10 0 0" />
+                <TextBox Text="{Binding SelectedPhone.PhoneNumber}" Margin="0 10 0 0" />
+                <DatePicker SelectedDate="{Binding SelectedPhone.DateOfBirth}" Margin="0 10 0 0" />
+                <DatePicker SelectedDate="{Binding SelectedPhone.RegistrationDate}" Margin="0 10 0 0" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

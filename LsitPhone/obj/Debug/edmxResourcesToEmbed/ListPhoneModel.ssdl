@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBListPhoneModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="id_country" />
+    </Key>
+    <Property Name="id_country" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CName" Type="nvarchar" MaxLength="70" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ListPhone">
+    <Key>
+      <PropertyRef Name="id_listphone" />
+    </Key>
+    <Property Name="id_listphone" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LPobatkovi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_country" Type="int" Nullable="false" />
+    <Property Name="LPhone" Type="int" Nullable="false" />
+    <Property Name="LDateBrith" Type="date" Nullable="false" />
+    <Property Name="LAddDate" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__ListPhone__id_co__3E52440B">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="ListPhone" Type="Self.ListPhone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="id_country" />
+      </Principal>
+      <Dependent Role="ListPhone">
+        <PropertyRef Name="id_country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBListPhoneModelStoreContainer">
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ListPhone" EntityType="Self.ListPhone" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ListPhone__id_co__3E52440B" Association="Self.FK__ListPhone__id_co__3E52440B">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="ListPhone" EntitySet="ListPhone" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
