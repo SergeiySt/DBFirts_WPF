@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBListPhoneModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="id_country" />
+          </Key>
+          <Property Name="id_country" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CName" Type="nvarchar" MaxLength="70" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ListPhone">
+          <Key>
+            <PropertyRef Name="id_listphone" />
+          </Key>
+          <Property Name="id_listphone" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LPobatkovi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_country" Type="int" Nullable="false" />
+          <Property Name="LPhone" Type="int" Nullable="false" />
+          <Property Name="LDateBrith" Type="date" Nullable="false" />
+          <Property Name="LAddDate" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__ListPhone__id_co__3E52440B">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="ListPhone" Type="Self.ListPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="id_country" />
+            </Principal>
+            <Dependent Role="ListPhone">
+              <PropertyRef Name="id_country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBListPhoneModelStoreContainer">
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListPhone" EntityType="Self.ListPhone" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ListPhone__id_co__3E52440B" Association="Self.FK__ListPhone__id_co__3E52440B">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="ListPhone" EntitySet="ListPhone" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBListPhoneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="id_country" />
+          </Key>
+          <Property Name="id_country" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CName" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ListPhone" Relationship="Self.FK__ListPhone__id_co__3E52440B" FromRole="Country" ToRole="ListPhone" />
+        </EntityType>
+        <EntityType Name="ListPhone">
+          <Key>
+            <PropertyRef Name="id_listphone" />
+          </Key>
+          <Property Name="id_listphone" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LPobatkovi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_country" Type="Int32" Nullable="false" />
+          <Property Name="LPhone" Type="Int32" Nullable="false" />
+          <Property Name="LDateBrith" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LAddDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__ListPhone__id_co__3E52440B" FromRole="ListPhone" ToRole="Country" />
+        </EntityType>
+        <Association Name="FK__ListPhone__id_co__3E52440B">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="ListPhone" Type="Self.ListPhone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="id_country" />
+            </Principal>
+            <Dependent Role="ListPhone">
+              <PropertyRef Name="id_country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_list_phoneEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="ListPhone" EntityType="Self.ListPhone" />
+          <AssociationSet Name="FK__ListPhone__id_co__3E52440B" Association="Self.FK__ListPhone__id_co__3E52440B">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="ListPhone" EntitySet="ListPhone" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBListPhoneModelStoreContainer" CdmEntityContainer="db_list_phoneEntities">
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="DBListPhoneModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="id_country" ColumnName="id_country" />
+                <ScalarProperty Name="CName" ColumnName="CName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListPhone">
+            <EntityTypeMapping TypeName="DBListPhoneModel.ListPhone">
+              <MappingFragment StoreEntitySet="ListPhone">
+                <ScalarProperty Name="id_listphone" ColumnName="id_listphone" />
+                <ScalarProperty Name="LSurname" ColumnName="LSurname" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="LPobatkovi" ColumnName="LPobatkovi" />
+                <ScalarProperty Name="LEmail" ColumnName="LEmail" />
+                <ScalarProperty Name="id_country" ColumnName="id_country" />
+                <ScalarProperty Name="LPhone" ColumnName="LPhone" />
+                <ScalarProperty Name="LDateBrith" ColumnName="LDateBrith" />
+                <ScalarProperty Name="LAddDate" ColumnName="LAddDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
