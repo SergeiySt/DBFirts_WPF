@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBListPhoneModelStoreContainer" CdmEntityContainer="db_list_phoneEntities">
+    <EntitySetMapping Name="Country">
+      <EntityTypeMapping TypeName="DBListPhoneModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ListPhone">
+      <EntityTypeMapping TypeName="DBListPhoneModel.ListPhone">
+        <MappingFragment StoreEntitySet="ListPhone">
+          <ScalarProperty Name="id_listphone" ColumnName="id_listphone" />
+          <ScalarProperty Name="LSurname" ColumnName="LSurname" />
+          <ScalarProperty Name="LName" ColumnName="LName" />
+          <ScalarProperty Name="LPobatkovi" ColumnName="LPobatkovi" />
+          <ScalarProperty Name="LEmail" ColumnName="LEmail" />
+          <ScalarProperty Name="id_country" ColumnName="id_country" />
+          <ScalarProperty Name="LPhone" ColumnName="LPhone" />
+          <ScalarProperty Name="LDateBrith" ColumnName="LDateBrith" />
+          <ScalarProperty Name="LAddDate" ColumnName="LAddDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

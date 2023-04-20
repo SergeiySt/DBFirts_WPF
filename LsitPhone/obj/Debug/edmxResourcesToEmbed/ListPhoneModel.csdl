@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBListPhoneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="id_country" />
+    </Key>
+    <Property Name="id_country" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CName" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ListPhone" Relationship="Self.FK__ListPhone__id_co__3E52440B" FromRole="Country" ToRole="ListPhone" />
+  </EntityType>
+  <EntityType Name="ListPhone">
+    <Key>
+      <PropertyRef Name="id_listphone" />
+    </Key>
+    <Property Name="id_listphone" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LPobatkovi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="id_country" Type="Int32" Nullable="false" />
+    <Property Name="LPhone" Type="Int32" Nullable="false" />
+    <Property Name="LDateBrith" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="LAddDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Country" Relationship="Self.FK__ListPhone__id_co__3E52440B" FromRole="ListPhone" ToRole="Country" />
+  </EntityType>
+  <Association Name="FK__ListPhone__id_co__3E52440B">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="ListPhone" Type="Self.ListPhone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="id_country" />
+      </Principal>
+      <Dependent Role="ListPhone">
+        <PropertyRef Name="id_country" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db_list_phoneEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Country" EntityType="Self.Country" />
+    <EntitySet Name="ListPhone" EntityType="Self.ListPhone" />
+    <AssociationSet Name="FK__ListPhone__id_co__3E52440B" Association="Self.FK__ListPhone__id_co__3E52440B">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="ListPhone" EntitySet="ListPhone" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
