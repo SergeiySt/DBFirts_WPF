@@ -20,3 +20,5 @@ D:\ДЗ_Шаг\Windows Forms C#\GitHub\DBFirts_WPF\LsitPhone\obj\Debug\LsitPhone
 D:\ДЗ_Шаг\Windows Forms C#\GitHub\DBFirts_WPF\LsitPhone\obj\Debug\LsitPhone.csproj.CopyComplete
 D:\ДЗ_Шаг\Windows Forms C#\GitHub\DBFirts_WPF\LsitPhone\obj\Debug\LsitPhone.exe
 D:\ДЗ_Шаг\Windows Forms C#\GitHub\DBFirts_WPF\LsitPhone\obj\Debug\LsitPhone.pdb
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\DBFirts_WPF\LsitPhone\obj\Debug\WAbout.g.cs
+D:\ДЗ_Шаг\Windows Forms C#\GitHub\DBFirts_WPF\LsitPhone\obj\Debug\WAbout.baml
